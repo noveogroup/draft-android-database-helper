@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = "com.noveogroup.android.database.Main"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
