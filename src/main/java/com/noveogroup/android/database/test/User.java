@@ -24,19 +24,43 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database;
+package com.noveogroup.android.database.test;
 
-/*
-Mapping:
- - simple       [field]              - [property]
- - embedded     [fields]             - [bean property]
- - foreign key  [foreign key field]  - [lazy/non-lazy bean property]
- - ...
- */
-public class Main {
+import java.util.Set;
 
-    public static void main(String[] args) {
-        System.out.println("draft-android-database-helper");
+public class User {
+
+    private Integer id;
+
+    private String username;
+
+    private Set<Role> roles;
+
+    public User() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
 }

@@ -26,17 +26,41 @@
 
 package com.noveogroup.android.database;
 
-/*
-Mapping:
- - simple       [field]              - [property]
- - embedded     [fields]             - [bean property]
- - foreign key  [foreign key field]  - [lazy/non-lazy bean property]
- - ...
- */
-public class Main {
+import android.content.ContentValues;
+import android.database.Cursor;
 
-    public static void main(String[] args) {
-        System.out.println("draft-android-database-helper");
+public final class BeanMapper {
+
+    private BeanMapper() {
+        throw new UnsupportedOperationException();
+    }
+
+    public static <T> T load(Cursor resultSet, Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> ContentValues save(T bean, Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> String sqlCreateTable(Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> String sqlDropTable(Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> String sqlDeleteAll(Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> String sqlSelectAll(Class<T> beanClass) {
+        return null;
+    }
+
+    public static <T> String sqlInsert(Class<T> beanClass) {
+        return null;
     }
 
 }

@@ -24,19 +24,7 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database;
+package android.content;
 
-/*
-Mapping:
- - simple       [field]              - [property]
- - embedded     [fields]             - [bean property]
- - foreign key  [foreign key field]  - [lazy/non-lazy bean property]
- - ...
- */
-public class Main {
-
-    public static void main(String[] args) {
-        System.out.println("draft-android-database-helper");
-    }
-
+public class ContentValues {
 }
