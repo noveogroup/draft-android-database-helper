@@ -9,4 +9,7 @@ repositories {
 }
 
 dependencies {
+
+    compile 'com.google.android:android:2.1.2'
+
 }
