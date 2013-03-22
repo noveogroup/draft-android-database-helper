@@ -63,4 +63,8 @@ public final class BeanMapper {
         return null;
     }
 
+    public static <T> String sqlUpdate(Class<T> beanClass, T bean) {
+        return null;
+    }
+
 }
