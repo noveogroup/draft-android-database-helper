@@ -26,13 +26,22 @@
 
 package com.noveogroup.android.database.release;
 
-import java.io.Serializable;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Bundle;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public class Annotations {
+public class BeanAnnotations {
+
+    public interface Serializator<T> {
+
+        public T load(Cursor cursor);
+
+    }
 
     public enum Type {
         TEXT, INTEGER, BLOB, REAL, AUTOINCREMENT
@@ -44,8 +53,6 @@ public class Annotations {
 
         public String name();
 
-        public Class<? extends Serializable> serializer(); // to save/load bean to table manually
-
     }
 
     @Target({ElementType.FIELD})
@@ -56,11 +63,18 @@ public class Annotations {
 
         public Type type() default Type.TEXT;
 
-        public String rawSql() default "";
+        public String rawSql() default ""; // there should be a lot of such rawSql
+
+        public String value() default "";
 
         public boolean nullable() default true;
+    }
 
-        public boolean unique() default false;
+    @Target({ElementType.FIELD, ElementType.TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Serializer {
+
+        public Class<? extends Serializator> value() default Serializator.class; // to save/load column to table manually
 
     }
 
@@ -81,13 +95,52 @@ public class Annotations {
 
     }
 
+    @Target({ElementType.FIELD})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Unique {
 
-    @Column
-    @PrimaryKey
-    private int id;
+        public String group() default ""; // for groups. user can choose any
 
-    @PrimaryKey
-    private int blahId;
+    }
 
-    private int testId;
+    @Target({ElementType.FIELD})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Index {
+
+        public String name() default ""; // for groups. user can choose any
+
+        public boolean unique() default false;
+
+    }
+
+    public static class ExampleBean {
+
+        @Column()
+        @PrimaryKey
+        private int id;
+
+        @PrimaryKey
+        private int blahId;
+
+        @ForeignKey(table = "Test")
+        private int testId;
+    }
+
+
+    public static interface BeanLoader<T> {
+
+        public T load(Cursor cursor, T bean, Bundle bundle);
+
+    }
+
+    public static interface BeanSaver<T> {
+
+        public ContentValues save(ContentValues values, T bean, Bundle bundle);
+
+    }
+
+    // singleton
+    public static class BeanMapperRegistry {
+    }
+
 }
