@@ -28,18 +28,17 @@ package com.noveogroup.android.database.test;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import com.noveogroup.android.database.release.BeanAnnotations;
 
+@OpenHelper("asdasd", 12)
 public interface UserDao {
 
+    public User getUser(@BeanAnnotations.Column long id);
+
+    @Native
+    public User getUser(SQLiteDatabase db, @BeanAnnotations.Column long id);
+
+
     public Cursor selectUser(SQLiteDatabase db);
-
-    public static class UserDaoImpl implements UserDao {
-
-        @Override
-        public Cursor selectUser(SQLiteDatabase db) {
-            return null;
-        }
-
-    }
 
 }
