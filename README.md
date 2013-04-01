@@ -1,1 +1,1 @@
-It is a draft of android-database-helper
+It is a draft of android-database-helper.
