@@ -24,21 +24,21 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database.test;
+package com.noveogroup.android.database._library_.annotations;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.noveogroup.android.database._library_.annotations.SQLColumn;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@OpenHelper("asdasd", 12)
-public interface UserDao {
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SQLTable {
 
-    public User getUser(@SQLColumn long id);
+    public String name();
 
-    @Native
-    public User getUser(SQLiteDatabase db, @SQLColumn long id);
+    // todo raw SQL
 
-
-    public Cursor selectUser(SQLiteDatabase db);
+    // todo custom row mapper
 
 }

@@ -24,13 +24,20 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database.provider;
+package com.noveogroup.android.database._library_.annotations;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@Documented
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface TableName {
-    String value();
+public @interface SQLIndex {
+
+    // index name. for groups. user can choose any
+    public String name() default "";
+
+    public boolean unique() default false;
+
 }

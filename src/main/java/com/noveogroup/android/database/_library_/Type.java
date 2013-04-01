@@ -24,21 +24,8 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database.test;
+package com.noveogroup.android.database._library_;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.noveogroup.android.database._library_.annotations.SQLColumn;
-
-@OpenHelper("asdasd", 12)
-public interface UserDao {
-
-    public User getUser(@SQLColumn long id);
-
-    @Native
-    public User getUser(SQLiteDatabase db, @SQLColumn long id);
-
-
-    public Cursor selectUser(SQLiteDatabase db);
-
+public enum Type {
+    TEXT, INTEGER, BLOB, REAL, AUTOINCREMENT
 }

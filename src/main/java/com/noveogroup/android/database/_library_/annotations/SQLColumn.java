@@ -24,21 +24,32 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database.test;
+package com.noveogroup.android.database._library_.annotations;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.noveogroup.android.database._library_.annotations.SQLColumn;
+import com.noveogroup.android.database._library_.Serializator;
+import com.noveogroup.android.database._library_.Type;
 
-@OpenHelper("asdasd", 12)
-public interface UserDao {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-    public User getUser(@SQLColumn long id);
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SQLColumn {
 
-    @Native
-    public User getUser(SQLiteDatabase db, @SQLColumn long id);
+    public String name() default "";
 
+    public Type type() default Type.TEXT;
 
-    public Cursor selectUser(SQLiteDatabase db);
+    public String rawSql() default ""; // there should be a lot of such rawSql
+
+    public String value() default "";
+
+    public boolean nullable() default true;
+
+    public Class<? extends Serializator> serializer() default Serializator.class; // to save/load column to table manually
+
+    // todo add index, unique etc.
 
 }

@@ -24,21 +24,14 @@
  * THE SOFTWARE.
  */
 
-package com.noveogroup.android.database.test;
+package com.noveogroup.android.database._library_;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import com.noveogroup.android.database._library_.annotations.SQLColumn;
-
-@OpenHelper("asdasd", 12)
-public interface UserDao {
-
-    public User getUser(@SQLColumn long id);
-
-    @Native
-    public User getUser(SQLiteDatabase db, @SQLColumn long id);
-
-
-    public Cursor selectUser(SQLiteDatabase db);
-
+/**
+* Created with IntelliJ IDEA.
+* User: pstepanov
+* Date: 4/1/13
+* Time: 6:22 PM
+* To change this template use File | Settings | File Templates.
+*/ // singleton
+public class BeanMapperRegistry {
 }
